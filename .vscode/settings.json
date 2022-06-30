@@ -1,0 +1,7 @@
+{
+    "task.problemMatchers.neverPrompt": false,
+    "json.schemas": [
+    
+    ],
+    "C_Cpp.errorSquiggles": "Disabled"
+}
