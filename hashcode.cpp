@@ -37,9 +37,34 @@ string infixToPostfix(string s){
   }
 return ans;
 }
+int calculate(int a,int b,char ch){
+  switch(ch){
+    case '+': return a+b;break;
+    case '-':return a-b;break;
+    case '*': return a*b;break;
+    case '/': return a/b;break;
+    case '^':return a^b;break;
+  }
+  return 0;
+}
+int evalutePostfix(string s){
+  stack<int>st;
+  for(int i=0;i<s.size();i++){
+    if(isOperand(s[i])) st.push(s[i]-'0');
+    else{
+      int b=st.top();
+      st.pop();
+      int a=st.top();
+      st.pop();
+      st.push(calculate(a,b,s[i]));
+    }
+  }
+  return st.top();
+}
 int main(){
   string s;
   cin>>s;
   cout<<infixToPostfix(s)<<endl;
+  cout<<evalutePostfix(infixToPostfix(s))<<endl;
 
 }
